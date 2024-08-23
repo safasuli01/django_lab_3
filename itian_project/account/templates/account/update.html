@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Update Account</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Update Account</h1>
+</div>
+
+<form method="POST">
+    {% csrf_token %}
+    <div>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" value="{{ account.username }}" required>
+    </div>
+
+    <div>
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" value="{{ account.email }}" required>
+    </div>
+
+    <div>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" value="{{ account.password }}" required>
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+
+    {% if error %}
+    <div>
+        <h3>{{ error }}</h3>
+    </div>
+    {% endif %}
+</form>
+{% endblock %}

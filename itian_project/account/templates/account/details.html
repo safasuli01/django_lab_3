@@ -1,0 +1,28 @@
+{% extends 'base.html' %}
+
+{% block title %}
+    <title>Account Details</title>
+{% endblock %}
+
+{% block content %}
+<div>
+    <h1>Account Details</h1>
+</div>
+
+<table width="100%" border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Email</th>
+            <th>Username</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>{{ account.id }}</td>
+            <td>{{ account.email }}</td>
+            <td>{{ account.username }}</td>
+        </tr>
+    </tbody>
+</table>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends 'base_trainee.html' %}
+{% block title %}
+<div>
+    <h1>Delete Trainee</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>ID: {{ trainee.id }}</div>
+<form method="POST">
+    {% csrf_token %}
+    <button type="submit">Confirm Deletion</button>
+</form>
+{% endblock %}

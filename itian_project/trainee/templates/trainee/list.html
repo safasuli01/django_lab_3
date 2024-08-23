@@ -1,0 +1,44 @@
+{% extends 'base_trainee.html' %}
+{% block title %}
+<div>
+    <h1>List of Trainees</h1>
+</div>
+{% endblock %}
+
+{% block content %}
+<div>
+    <a href="{% url 'create_trainee' %}">Create</a>
+</div>
+
+<table width="100%" border="2px solid #000">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Surname</th>
+            <th>Date of Birth</th>
+            <th>Username Account</th>
+            <th>Track Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for trainee in trainees %}
+        <tr>
+            <td>{{ trainee.id }}</td>
+            <td>{{ trainee.first_name }}</td>
+            <td>{{ trainee.last_name }}</td>
+            <td>{{ trainee.date_of_birth }}</td>
+            <td>{{ trainee.account_obj.username }}</td>
+            <td>{{ trainee.track_obj.name }}</td>
+            <td>
+                <a href="{% url 'trainee_details' trainee.id %}">Details</a>
+                <a href="{% url 'update_trainee' trainee.id %}">Update</a>
+                <a href="{% url 'delete_trainee' trainee.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% endblock %}
