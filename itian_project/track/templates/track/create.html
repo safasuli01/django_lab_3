@@ -1,26 +1,26 @@
-{% extends "account/base_track.html" %}
-
+{% extends "base.html" %}
 {% block title %}
-    Create Track
+<div>
+    <h1>Create Track</h1>
+</div>
 {% endblock %}
 
 {% block content %}
+<form method="POST">
+    {% csrf_token %}
+
     <div>
-        <h1>Create Track</h1>
+        <label for="name">Name: </label>
+        <input type="text" id="name" name="name" required />
     </div>
 
-    <form method="POST">
-        {% csrf_token %}
-        <div>
-            <label for="name">Name: </label>
-            <input type="text" id="name" name="name" required>
-        </div>
-        <div>
-            <label for="description">Description: </label>
-            <input type="text" id="description" name="description" required>
-        </div>
-        <div>
-            <button type="submit">Submit</button>
-        </div>
-    </form>
+    <div>
+        <label for="description">Description: </label>
+        <input type="text" id="description" name="description" required />
+    </div>
+
+    <div>
+        <button type="submit">Submit</button>
+    </div>
+</form>
 {% endblock %}

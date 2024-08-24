@@ -1,37 +1,36 @@
-{% extends 'account/base_track.html' %}
-
+{% extends 'base.html' %}
 {% block title %}
-    Tracks List
+<div>
+    <h1>List of Tracks</h1>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div>
-        <h1>Tracks List</h1>
-        <a href="{% url 'create_track' %}">Create Track</a>
-    </div>
-
-    <table width="100%" border="1">
-        <thead>
-            <tr>
-                <th>ID</th>
-                <th>Name</th>
-                <th>Description</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
-        <tbody>
-            {% for track in tracks %}
-            <tr>
-                <td>{{ track.id }}</td>
-                <td>{{ track.name }}</td>
-                <td>{{ track.description }}</td>
-                <td>
-                    <a href="{% url 'track_details' track.id %}">Details</a>
-                    <a href="{% url 'update_track' track.id %}">Update</a>
-                    <a href="{% url 'delete_track' track.id %}">Delete</a>
-                </td>
-            </tr>
-            {% endfor %}
-        </tbody>
-    </table>
+<div>
+    <a href="{% url 'create_track' %}">Create</a>
+</div>
+<table width="100%" border="1px solid #000">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for track in tracks %}
+        <tr>
+            <td>{{ track.id }}</td>
+            <td>{{ track.name }}</td>
+            <td>{{ track.description }}</td>
+            <td>
+                <a href="{% url 'track_details' track.id %}">Details</a>
+                <a href="{% url 'update_track' track.id %}">Update</a>
+                <a href="{% url 'delete_track' track.id %}">Delete</a>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
 {% endblock %}

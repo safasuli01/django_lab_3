@@ -37,9 +37,10 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'account.config.AccountConfig',
-    'trainee.config.TraineeConfig',
-    'tracking.config.TrackConfig',
+    'account.apps.AccountConfig',
+    'trainee.apps.TraineeConfig',
+    'track.apps.TrackConfig',
+    'home',
 ]
 
 MIDDLEWARE = [
@@ -50,6 +51,8 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    ##
+
 ]
 
 ROOT_URLCONF = 'itian_project.urls'
@@ -80,7 +83,7 @@ DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.postgresql',
         # 'NAME': BASE_DIR / 'db.sqlite3',
-        'NAME' : 'django_lab_2',
+        'NAME' : 'django',
         'USER' : 'iti',
         'PASSWORD' : '123',
         'HOST' : 'localhost'

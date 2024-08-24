@@ -2,6 +2,9 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse
 from .models import Account
 
+def index(request):
+    return render(request, 'index.html')
+
 # List accounts
 def list_account(request):
     accounts = Account.objects.all()

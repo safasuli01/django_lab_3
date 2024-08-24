@@ -1,21 +1,21 @@
 {% extends 'base.html' %}
-
 {% block title %}
-    <title>List of Accounts</title>
+<div>
+    <h1>List of Accounts</h1>
+</div>
 {% endblock %}
 
 {% block content %}
 <div>
-    <h1>List of Accounts</h1>
-    <a href="{% url 'account_create' %}">Create New Account</a>
+    <a href="{% url 'create_account' %}">Create</a>
 </div>
-
-<table width="100%" border="1">
+<table width="100%" border="2px solid #000">
     <thead>
         <tr>
             <th>ID</th>
             <th>Username</th>
             <th>Email</th>
+            <th>Password</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -25,10 +25,11 @@
             <td>{{ account.id }}</td>
             <td>{{ account.username }}</td>
             <td>{{ account.email }}</td>
+            <td>{{ account.password }}</td>
             <td>
                 <a href="{% url 'account_details' account.id %}">Details</a>
-                <a href="{% url 'account_update' account.id %}">Update</a>
-                <a href="{% url 'account_delete' account.id %}">Delete</a>
+                <a href="{% url 'update_account' account.id %}">Update</a>
+                <a href="{% url 'delete_account' account.id %}">Delete</a>
             </td>
         </tr>
         {% endfor %}

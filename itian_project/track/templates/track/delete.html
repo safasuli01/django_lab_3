@@ -1,16 +1,10 @@
-{% extends 'account/base_track.html' %}
-
+{% extends 'base.html' %}
 {% block title %}
-    Delete Track
+<div>
+    <h1>Delete Track</h1>
+</div>
 {% endblock %}
 
 {% block content %}
-    <div>
-        <h1>Delete Track</h1>
-        <p>Are you sure you want to delete track with ID: {{ id }}?</p>
-        <form method="POST">
-            {% csrf_token %}
-            <button type="submit">Confirm Delete</button>
-        </form>
-    </div>
+<div>ID: {{ id }}</div>
 {% endblock %}

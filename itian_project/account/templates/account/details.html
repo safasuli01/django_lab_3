@@ -1,27 +1,30 @@
 {% extends 'base.html' %}
-
 {% block title %}
-    <title>Account Details</title>
-{% endblock %}
-
-{% block content %}
 <div>
     <h1>Account Details</h1>
 </div>
+{% endblock %}
 
-<table width="100%" border="1">
+{% block content %}
+<table width="100%" border="1px solid #000">
     <thead>
         <tr>
             <th>ID</th>
             <th>Email</th>
-            <th>Username</th>
+            <th>Password</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         <tr>
             <td>{{ account.id }}</td>
             <td>{{ account.email }}</td>
-            <td>{{ account.username }}</td>
+            <td>{{ account.password }}</td>
+            <td>
+                <a href="{% url 'account_details' account.id %}">Details</a>
+                <a href="{% url 'update_account' account.id %}">Update</a>
+                <a href="{% url 'delete_account' account.id %}">Delete</a>
+            </td>
         </tr>
     </tbody>
 </table>
