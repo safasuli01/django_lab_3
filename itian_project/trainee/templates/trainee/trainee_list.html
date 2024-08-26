@@ -1,0 +1,47 @@
+{% extends 'base.html' %} {% block title %}
+
+<div><h1>Trainee List</h1></div>
+{% endblock %} {% block content %}
+<div>
+    <a href="{% url 'create_trainee' %}">Create</a>
+</div>
+
+<table width="100%" border="1px solid #000">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Age</th>
+            <th>Username</th>
+            <th>Track Name</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+
+    <tbody>
+        {% for trainee in object_list %}
+        <tr id="trainee-{{ trainee.id }}">
+            <td>{{trainee.id}}</td>
+            <td>{{trainee.first_name}}</td>
+            <td>{{trainee.last_name}}</td>
+            <td>{{trainee.age}}</td>
+            <td>{{trainee.account_obj.username}}</td>
+            <td>{{trainee.track_obj.name}}</td>
+
+            <td>
+                <a href="{%url 'trainee_details' trainee.id%}">Details</a>
+                <a href="{%url 'update_trainee' trainee.id%}">Update</a>
+                {% comment %}
+                <a href="{%url 'delete_trainee' trainee.id%}">Delete</a>
+                {% endcomment %}
+                <button class="delete-btn-trainee" data-id="{{ trainee.id }}">
+                    Delete
+                </button>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+
+{% endblock %}

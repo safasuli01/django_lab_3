@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-<div>
-    <h1>List of Tracks</h1>
-</div>
+<div><h1>List of Tracks</h1></div>
 {% endblock %}
 
 {% block content %}
@@ -15,6 +13,7 @@
             <th>ID</th>
             <th>Name</th>
             <th>Description</th>
+            <th>Photo</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -24,10 +23,12 @@
             <td>{{ track.id }}</td>
             <td>{{ track.name }}</td>
             <td>{{ track.description }}</td>
+            <td>{{track.photo}}</td>
             <td>
                 <a href="{% url 'track_details' track.id %}">Details</a>
                 <a href="{% url 'update_track' track.id %}">Update</a>
                 <a href="{% url 'delete_track' track.id %}">Delete</a>
+                <button class="delete-btn-track" data-id="{{ track.id }}">Delete</button>
             </td>
         </tr>
         {% endfor %}

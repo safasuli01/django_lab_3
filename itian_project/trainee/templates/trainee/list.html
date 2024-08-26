@@ -15,25 +15,30 @@
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
             <th>Age</th>
+            <th>Photo</th>
+            <th>Username</th>
             <th>Track</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for trainee in trainees %}
-        <tr>
+        <tr id="trainee-{{trainee.id}}">
             <td>{{ trainee.id }}</td>
             <td>{{ trainee.first_name }}</td>
             <td>{{ trainee.last_name }}</td>
-            <td>{{ trainee.email }}</td>
             <td>{{ trainee.age }}</td>
-            <td>{{ trainee.track }}</td>
+            <td>{{trainee.photo}}</td>
+            <td>{{trainee.account_obj.username}}</td>
+            <td>{{ trainee.track_obj.name }}</td>
             <td>
                 <a href="{% url 'trainee_details' trainee.id %}">Details</a>
                 <a href="{% url 'update_trainee' trainee.id %}">Update</a>
+                {% comment %}
                 <a href="{% url 'delete_trainee' trainee.id %}">Delete</a>
+                {% endcomment %}
+                <button data-id="{{trainee.id}}" class="delete-btn-trainee">Delete</button>
             </td>
         </tr>
         {% endfor %}

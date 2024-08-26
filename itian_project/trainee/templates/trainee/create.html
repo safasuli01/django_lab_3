@@ -1,14 +1,11 @@
 {% extends "base.html" %}
 {% block title %}
-<div>
-    <h1>Create Trainee</h1>
-</div>
+<div><h1>Create Trainee</h1></div>
 {% endblock %}
 
 {% block content %}
-<form method="POST">
-    {% csrf_token %}
-
+<form method="POST" enctype="multipart/form-data">
+    {% csrf_token %} {% comment %}
     <div>
         <label for="first_name">First Name: </label>
         <input type="text" id="first_name" name="first_name" required />
@@ -32,6 +29,15 @@
     <div>
         <label for="track">Track: </label>
         <input type="text" id="track" name="track" required />
+    </div>
+
+    <div>
+        <label for="account_obj">Username: </label>
+        <select name="account_obj" id="account_obj">
+            {% for account in accounts %}
+            <option value="{{ account.id }}">{{account.username}}</option>
+            {%endfor%}
+        </select>
     </div>
 
     <div>

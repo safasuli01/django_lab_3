@@ -16,20 +16,29 @@
             <th>Username</th>
             <th>Email</th>
             <th>Password</th>
+            <th>Photo</th>
+            <th>Add to</th>
             <th>Actions</th>
         </tr>
     </thead>
     <tbody>
         {% for account in accounts %}
-        <tr>
+        <tr id="account-{{account.id}}">
             <td>{{ account.id }}</td>
             <td>{{ account.username }}</td>
             <td>{{ account.email }}</td>
             <td>{{ account.password }}</td>
+            <td>{{ account.photo }}</td>
+            <td>{{ account.add_to}}</td>
             <td>
                 <a href="{% url 'account_details' account.id %}">Details</a>
                 <a href="{% url 'update_account' account.id %}">Update</a>
+                {%comment%}
                 <a href="{% url 'delete_account' account.id %}">Delete</a>
+                {% endcomment %}
+                <button class="delete-btn-account" data-id="{{ account.id }}">
+                    Delete
+                </button>
             </td>
         </tr>
         {% endfor %}

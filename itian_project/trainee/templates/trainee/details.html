@@ -1,8 +1,6 @@
 {% extends 'base.html' %}
 {% block title %}
-<div>
-    <h1>Trainee Details</h1>
-</div>
+<div><h1>Trainee Details</h1></div>
 {% endblock %}
 
 {% block content %}
@@ -12,8 +10,8 @@
             <th>ID</th>
             <th>First Name</th>
             <th>Last Name</th>
-            <th>Email</th>
             <th>Age</th>
+            <th>Photo</th>
             <th>Track</th>
             <th>Actions</th>
         </tr>
@@ -23,13 +21,15 @@
             <td>{{ trainee.id }}</td>
             <td>{{ trainee.first_name }}</td>
             <td>{{ trainee.last_name }}</td>
-            <td>{{ trainee.email }}</td>
             <td>{{ trainee.age }}</td>
-            <td>{{ trainee.track }}</td>
+            <td><img src="{{ trainee.photo.url }}" alt="Trainee Photo" width="100px"></td>
+            <td>{{trainee.account_obj.username}}</td>
+            <td>{{trainee.track_obj.name}}</td>
             <td>
                 <a href="{% url 'trainee_details' trainee.id %}">Details</a>
                 <a href="{% url 'update_trainee' trainee.id %}">Update</a>
                 <a href="{% url 'delete_trainee' trainee.id %}">Delete</a>
+                <button class="delete-btn-trainee" data-id="{{trainee.id}}">Delete</button>
             </td>
         </tr>
     </tbody>

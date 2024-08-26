@@ -1,5 +1,7 @@
-from django.urls import path, include
-from .views import track_list, create_track, update_track, delete_track, track_details
+from django.urls import path
+from .views import *
+from django.conf import settings
+from django.conf.urls.static import static
 
 urlpatterns = [
     path("", track_list, name="track_list"),
@@ -7,5 +9,4 @@ urlpatterns = [
     path("update/<int:id>/", update_track, name="update_track"),
     path("delete/<int:id>/", delete_track, name="delete_track"),
     path("details/<int:id>/", track_details, name="track_details"),
-    path('', include('home.urls')),
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
